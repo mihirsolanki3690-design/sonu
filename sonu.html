@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Life, Sonu ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;font-family:'Poppins',sans-serif;cursor:url('https://cur.cursors-4u.net/others/oth-1/oth23.cur'), auto;}
+
+/* 🌸 Romantic Gradient Background */
+#bg-overlay{position:fixed;inset:0;background:radial-gradient(circle at top,#ffd1dc 0%,#fcbad3 30%,#a18cd1 65%,#2b1055 100%);z-index:-3;}
+
+/* Floating Hearts */
+.heart{position:fixed;bottom:-20px;font-size:20px;animation:floatUp linear infinite;z-index:-2;opacity:0.8;}
+@keyframes floatUp{from{transform:translateY(0);opacity:0}20%{opacity:1}to{transform:translateY(-120vh);opacity:0}}
+
+/* Main Layout */
+.container{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;}
+.card{background:rgba(255,255,255,0.75);backdrop-filter:blur(20px);padding:35px;border-radius:35px;max-width:520px;width:100%;text-align:center;box-shadow:0 0 80px rgba(255,0,120,0.35);}
+
+/* Slides */
+.slide{display:none;animation:fade 1s ease}
+.slide.active{display:block}
+@keyframes fade{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+
+/* TEXT FIX */
+h1{font-family:'Dancing Script',cursive;font-size:3rem;color:#d81b60;margin-bottom:15px;text-shadow:0 2px 8px rgba(0,0,0,0.15);}
+p{color:#333;font-size:1.05rem;line-height:1.7;}
+input{width:90%;padding:14px;border-radius:30px;border:none;margin-top:15px;font-size:1.05rem;text-align:center;}
+button{margin-top:20px;padding:14px 45px;border:none;border-radius:50px;background:linear-gradient(45deg,#ff4d88,#9b5cff);color:white;font-size:1.05rem;cursor:pointer;transition:0.3s;}
+button:hover{transform:scale(1.07);}
+.error{color:#c62828;margin-top:10px;min-height:20px;}
+
+/* 📸 Story Images */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
+.story-item img{width:100%;height:120px;object-fit:cover;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+.story-item span{display:block;margin-top:5px;font-size:0.8rem;color:#d81b60;font-weight:500;}
+
+/* Canvas fireworks */
+canvas{position:fixed;inset:0;pointer-events:none;z-index:-1;}
+
+/* Timeline */
+.timeline{max-width:600px;margin:40px auto;padding:20px;background:rgba(255,255,255,0.8);backdrop-filter:blur(15px);border-radius:20px;text-align:center;box-shadow:0 0 50px rgba(255,0,120,0.3);}
+.timeline h2{font-family:'Dancing Script',cursive;font-size:2.5rem;color:#d81b60;margin-bottom:25px;}
+.milestone-box{margin:20px 0;padding:15px;background:linear-gradient(45deg,#ff4d88,#9b5cff);color:white;border-radius:20px;font-size:1.3rem;font-weight:500;box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+</style>
+</head>
+
+<body>
+
+<div id="bg-overlay"></div>
+<canvas id="canvas"></canvas>
+
+<div class="container">
+<div class="card">
+
+<!-- Slide 1 -->
+<div class="slide active" id="s1">
+<h1>Hi Sonu ❤️</h1>
+<p>As this beautiful year ends,<br><strong>Welcome to 2026 — a year where our love story grows even more beautiful, a year where we are taking our biggest step together.<br>  
+From the very first moment I saw you, my heart knew it had found its home.  
+Every smile, every glance, every little gesture from you fills my world with warmth and endless joy.<br>  
+With you, every day feels magical, and every moment is a memory I want to cherish forever.  
+You are not just my love, you are my heart, my peace, my everything.<br>  
+This year, our journey becomes even more special — hand in hand, heart to heart, forever together.
+</strong></p>
+<button onclick="go(2)">Let’s Begin 🌹</button>
+</div>
+
+<!-- Slide 2: Timeline + Animated Counter -->
+<div class="slide" id="s2">
+<h1>Our Special Moments ❤️</h1>
+<div class="timeline">
+  <div id="milestones"></div>
+  <div id="timeSpent" style="margin-top:30px;font-size:1.5rem;color:#d81b60;"></div>
+</div>
+<button onclick="go(3)" style="margin-top:25px;">Next 💞</button>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="s3">
+<h1>Unlock My Heart 🔐</h1>
+<p>Only you know the magic words…</p>
+<input id="pass" placeholder="Dil thi lakhjo ❤️">
+<div class="error" id="err"></div>
+<button onclick="check()">Unlock ❤️</button>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" id="s4">
+<h1>Our Story ✨</h1>
+<p>July 2025 wasn’t just a month… it was the beginning of <strong>us</strong> 💖</p>
+<div class="story">
+  <div class="story-item"><img src="img1.jpeg"><span>First Look 💓</span></div>
+  <div class="story-item"><img src="img2.jpeg"><span>Late Nights 🌙</span></div>
+  <div class="story-item"><img src="img3.jpeg"><span>My Safe Place✨</span></div>
+  <div class="story-item"><img src="img4.PNG"><span>Forever 💍</span></div>
+</div>
+
+<button onclick="go(5)">Our Future 💞</button>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" id="s5">
+<h1>The Promise 💍</h1>
+<p>I don’t want a perfect life,<br> I just want a life with <strong>you</strong>.</p>
+<p><strong>2026 is ours.</strong></p>
+<button onclick="go(6)">Welcome 2026 🥂</button>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide" id="s6">
+<h1 style="font-size:3.5rem">Happy New Year 2026 ❤️</h1>
+<p>I love you more than words can ever say.</p>
+<div style="font-size:3rem;margin:20px 0">💖👩‍❤️‍👨💍🎆</div>
+<p style="font-style:italic;color:#ad1457">“Tari sathe akhi jindagi… haath pakdi ne chalvu che.”</p>
+</div>
+
+</div>
+</div>
+
+<!-- 🎶 Romantic Music -->
+<audio autoplay loop>
+<source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* Hearts */
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ const emojis = ["🌊","❤️","🌙"];
+ h.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+ h.style.left = Math.random()*100 + "vw";
+ h.style.fontSize = (Math.random()*20 + 15) + "px";
+ h.style.animationDuration = (Math.random()*5 + 5) + "s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),10000);
+},400);
+
+/* Slides */
+function go(n){
+ document.querySelectorAll(".slide").forEach(s=>s.classList.remove("active"));
+ document.getElementById("s"+n).classList.add("active");
+ if(n===6)fireworks();
+}
+
+/* Password */
+let msgs=["Kevu Sonu ek password ni khabar pde ke  😠","Pyar thi lakho ❤️"];
+let i=0;
+function check(){
+ let v=pass.value.toLowerCase().trim();
+ if(v==="i love you dobi"||v==="i love you mari jaan"){
+  go(4);
+ }else{
+  err.innerText=msgs[i%msgs.length];
+  i++;
+ }
+}
+
+/* Fireworks */
+const c=document.getElementById("canvas");
+const x=c.getContext("2d");
+resize();window.onresize=resize;
+let p=[];
+function resize(){c.width=innerWidth;c.height=innerHeight}
+function fireworks(){
+ setInterval(()=>{
+  let cx=Math.random()*c.width;
+  let cy=Math.random()*c.height/2;
+  for(let i=0;i<80;i++){
+   p.push({x:cx,y:cy,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6,a:1});
+  }
+ },600);
+ animate();
+}
+function animate(){
+ x.fillStyle="rgba(0,0,0,0.15)";
+ x.fillRect(0,0,c.width,c.height);
+ p.forEach((o,i)=>{
+  o.x+=o.vx;o.y+=o.vy;o.vy+=0.05;o.a-=0.01;
+  x.fillStyle="rgba(255,80,120,"+o.a+")";
+  x.beginPath();x.arc(o.x,o.y,2,0,Math.PI*2);x.fill();
+  if(o.a<=0)p.splice(i,1);
+ });
+ requestAnimationFrame(animate);
+}
+
+/* Timeline + Animated Counter */
+const milestonesContainer = document.getElementById("milestones");
+const timeElem = document.getElementById("timeSpent");
+if(milestonesContainer && timeElem){
+  const milestones = [
+    {date: new Date(2025,6,13), text:"💖 First Meet"},
+    {date: new Date(2025,6,28), text:"💌 First Talk"},
+    {date: new Date(2025,10,5), text:"💍 Engagement"}
+  ];
+  milestones.forEach(m=>{
+    const div = document.createElement("div");
+    div.className = "milestone-box";
+    div.innerHTML = `${m.text} - ${m.date.getDate()}/${m.date.getMonth()+1}/${m.date.getFullYear()}`;
+    milestonesContainer.appendChild(div);
+  });
+
+  const firstMeet = new Date(2025,6,13);
+  function updateTimeSpent(){
+    const now = new Date();
+    const diffTime = now - firstMeet;
+    const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const totalWeeks = Math.floor(totalDays / 7);
+    const totalMonths = (now.getFullYear() - firstMeet.getFullYear()) * 12 + (now.getMonth() - firstMeet.getMonth());
+    const duration = 1000;
+    const start = timeElem.dataset.lastValue ? parseInt(timeElem.dataset.lastValue) : 0;
+    const end = totalDays;
+    let startTime = null;
+    function animate(timestamp){
+      if(!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime)/duration,1);
+      const currentDays = Math.floor(start + (end-start)*progress);
+      timeElem.innerHTML = `💞 Time spent together: ${currentDays} days (~${Math.floor(currentDays/7)} weeks, ~${totalMonths} months)`;
+      if(progress < 1) requestAnimationFrame(animate);
+      else timeElem.dataset.lastValue = currentDays;
+    }
+    requestAnimationFrame(animate);
+  }
+  updateTimeSpent();
+  setInterval(updateTimeSpent,1000);
+}
+</script>
+
+</body>
+</html>
